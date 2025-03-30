@@ -1,0 +1,1 @@
+Files for an ID card verification microservice that uses deep learning to verify the validity of an ID card and asserts that the user is the owner of the ID (For KYC purpose)
