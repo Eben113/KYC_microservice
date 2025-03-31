@@ -1,5 +1,5 @@
 import os
-os.system("pip install requirements.txt")
+os.system("pip install -r requirements.txt")
 
 import io
 from fastapi import FastAPI, File, UploadFile
