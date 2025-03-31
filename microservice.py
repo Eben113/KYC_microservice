@@ -8,11 +8,11 @@ import verify
 
 app = FastAPI()
 
-app.add_middleware(CORSMiddleware,
+"""app.add_middleware(CORSMiddleware,
                    allow_origins = ["*"],
                    allow_credentials = True,
                    allow_methods = ["*"],
-                   allow_headers = ["*"])
+                   allow_headers = ["*"])"""
 
 @app.post("/verify-id-owner/")
 async def score(id: UploadFile = File(...), selfie: UploadFile = File(...)):
