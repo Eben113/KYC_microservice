@@ -17,15 +17,16 @@
         
         <form id="form1">
             <label for="image1">Upload First Image:</label>
-            <input type="file" id="image1" accept="image/*">
+            <input type="file" id="image1" accept="image/*", >
         </form>
         
         <form id="form2">
             <label for="image2">Upload Second Image:</label>
             <input type="file" id="image2" accept="image/*">
         </form>
+        <button onclick="upload()">verify</button>
         
-        <div id="result">Number: <span id="numberSlot">0</span></div>
+        <div id="result">Similarity Score: <span id="numberSlot">0</span></div>>
     </div>
     <script type = "text/javascript">
         async function upload(){
@@ -39,15 +40,16 @@
                 const iden = id.files[0];
                 const pic = selfie.files[0];
                 const formdata = new FormData()
-                formdata.append("id", iden)
+                formdata.append("id_", iden)
                 formdata.append("selfie", pic)
                 try{
-                    const response = await fetch("https://127.0.0.1:8888/verify-id-owner/", {
+                    const response = await fetch("https://didactic-space-computing-machine-v66qvr4rvr6hxgqq-8000.app.github.dev/verify-id-owner/", {
                         method : "POST",
                         body: formdata
                     });
-                    const result = await response
-                    document.getElementById("numberSlot").textcontent = response
+                    const result = await response.json()
+                    document.getElementById("numberSlot").innerHTML = result.score
+                    console.log(result.score)
                 }
                 catch(error){
                     console.log("Error: ", error)
