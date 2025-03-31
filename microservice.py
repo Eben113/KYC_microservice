@@ -22,9 +22,13 @@ async def score(response:Response, id_: UploadFile = File(...), selfie: UploadFi
   with open(f"{selfie.filename}", "wb") as buffer:
     buffer.write(await selfie.read())
   result = verify.compare(id_.filename, selfie.filename)
+  if result >  0.2:
+    status = "Verified"
+  else:
+    status = "Not Verified
 
   os.remove(id_.filename)
   os.remove(selfie.filename)
   
   print(result)
-  return {"score": float(result)}
+  return {"score": float(result, 2), "stat": status}
