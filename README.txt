@@ -1,2 +1,2 @@
 Files for an ID card verification microservice that uses deep learning to verify the validity of an ID card and asserts that the user is the owner of the ID (For KYC purpose), It checks the legitimacy of the ID, then assesses whether the image of the holder and the image detected in the ID are the same using a hugging face model and DeepFace.
-Since It's built as an API(I'm building it as part of a larger project), I uploaded screenshot of the API in action using a quick html script as the frontend( Verified.png and Nverified.png)
+Since It's built as an API(I'm building it as part of a larger project), I uploaded screenshot of the API in action using a quick html script as the frontend( Positive.png and Negative.png)
