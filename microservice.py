@@ -25,10 +25,10 @@ async def score(response:Response, id_: UploadFile = File(...), selfie: UploadFi
   if result >  0.2:
     status = "Verified"
   else:
-    status = "Not Verified
+    status = "Not Verified"
 
   os.remove(id_.filename)
   os.remove(selfie.filename)
   
   print(result)
-  return {"score": float(result, 2), "stat": status}
+  return {"score": str(result)[:6], "stat": status}
