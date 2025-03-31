@@ -39,4 +39,4 @@ def compare(id_src, selfie_src):
   else:
     face1, face2 = extract_face(id_src), extract_face(selfie_src)
     score = check_similarity(face1, face2)
-    return score.item()s
+    return score.item()
