@@ -77,7 +77,7 @@
                         body: formdata
                     });
                     const result = await response.json()
-                    document.getElementById("numberSlot").innerHTML = result.score
+                    document.getElementById("numberSlot").innerHTML = `${result.score},   ${result.stat}`
                     console.log(result.score)
                 }
                 catch(error){
