@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        .container { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        input[type="file"] { margin: 10px 0; }
+        #result { font-size: 24px; font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Upload Your Images</h2>
+        
+        <form id="form1">
+            <label for="image1">Upload First Image:</label>
+            <input type="file" id="image1" accept="image/*">
+        </form>
+        
+        <form id="form2">
+            <label for="image2">Upload Second Image:</label>
+            <input type="file" id="image2" accept="image/*">
+        </form>
+        
+        <div id="result">Number: <span id="numberSlot">0</span></div>
+    </div>
+    <script type = "text/javascript">
+        async function upload(){
+            const id = document.getElementById("image1");
+            const selfie = document.getElementById("image2");
+            if (!id & !selfie){
+                alert("Please Upload your files");
+                return;
+            }
+            else{
+                const iden = id.files[0];
+                const pic = selfie.files[0];
+                const formdata = new FormData()
+                formdata.append("id", iden)
+                formdata.append("selfie", pic)
+                try{
+                    const response = await fetch("https://127.0.0.1:8888/verify-id-owner/", {
+                        method : "POST",
+                        body: formdata
+                    });
+                    const result = await response
+                    document.getElementById("numberSlot").textcontent = response
+                }
+                catch(error){
+                    console.log("Error: ", error)
+                    alert("Failed")
+                }
+            }
+        }
+        </script>
+</body>
+</html>
